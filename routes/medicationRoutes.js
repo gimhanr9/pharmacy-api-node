@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const medicationController = require('../controllers/medicationController');
-const { checkAuth } = require('../middleware/checkAuth');
+const checkAuth = require('../middleware/checkAuth');
 
 router.get(
   '/medications',
@@ -28,3 +28,5 @@ router.delete(
   checkAuth(['owner']),
   medicationController.deleteMedication
 );
+
+module.exports = router;

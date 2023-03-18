@@ -28,3 +28,5 @@ router.delete(
   checkAuth(['owner']),
   customerController.deleteCustomer
 );
+
+module.exports = router;
