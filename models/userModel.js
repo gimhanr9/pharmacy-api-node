@@ -6,16 +6,20 @@ module.exports = (sequelize, Sequelize) => {
     username: { type: Sequelize.STRING, allowNull: false, unique: true },
     email: { type: Sequelize.STRING, allowNull: false, unique: true },
     password: { type: Sequelize.STRING, allowNull: false },
-    role: {
-      type: Sequelize.STRING,
-      references: {
-        model: Role,
-        key: 'id',
-      },
-    },
     otp: { type: Sequelize.INTEGER },
     failed_attempts: { type: Sequelize.INTEGER },
+    // roleId: {
+    //   type: Sequelize.INTEGER,
+    //   references: {
+    //     model: 'roles',
+    //     key: 'id',
+    //   },
+    // },
   });
+
+  // User.associate = function (models) {
+  //   User.belongsTo(models.Role, { foreignKey: 'roleId' });
+  // };
 
   return User;
 };
