@@ -8,11 +8,18 @@ module.exports = (sequelize, Sequelize) => {
     password: { type: Sequelize.STRING, allowNull: false },
     otp: { type: Sequelize.INTEGER },
     failed_attempts: { type: Sequelize.INTEGER },
+    // roleId: {
+    //   type: Sequelize.INTEGER,
+    //   references: {
+    //     model: 'roles',
+    //     key: 'id',
+    //   },
+    // },
   });
 
-  User.associate = function (models) {
-    User.belongsTo(models.Role, { foreignKey: 'roleId' });
-  };
+  // User.associate = function (models) {
+  //   User.belongsTo(models.Role, { foreignKey: 'roleId' });
+  // };
 
   return User;
 };

@@ -17,11 +17,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 4000;
+const roles = [{ name: 'owner' }, { name: 'manager' }, { name: 'cashier' }];
 
 db.sequelize
   .sync({ force: true })
   .then(() => {
     console.log('Drop and re-sync db.');
+    db.roles
+      .bulkCreate(roles)
+      .then(() => {
+        console.log('Roles added successfully.');
+      })
+      .catch((error) => {
+        console.log('Error creating roles:', error);
+      });
   })
   .catch((err) => console.log(err));
 

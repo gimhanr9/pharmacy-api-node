@@ -33,5 +33,6 @@ db.customers.belongsToMany(db.medications, {
   foreignKey: 'customerId',
   otherKey: 'medicationId',
 });
-
+db.roles.hasMany(db.users, { foreignKey: 'roleId', sourceKey: 'id' });
+db.users.belongsTo(db.roles, { foreignKey: 'roleId' });
 module.exports = db;
