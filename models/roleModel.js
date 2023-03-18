@@ -3,8 +3,9 @@ module.exports = (sequelize, Sequelize) => {
     name: { type: Sequelize.STRING, allowNull: false },
   });
 
+  Role.associate = function (models) {
+    Role.hasMany(models.User, { foreignKey: 'roleId', sourceKey: 'id' });
+  };
+
   return Role;
 };
-
-Role.belongsTo(companyData, { foreignKey: 'bankingId' });
-companyData.hasOne(Bank, { foreignKey: 'bankId' });
